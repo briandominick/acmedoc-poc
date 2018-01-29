@@ -159,6 +159,7 @@ Therefore, the power of LiquiDoc is mainly in two of its features:
 . AsciiDoc preprocessing.
 +
 LiquiDoc massages data into AsciiDoc formatted files and saves them in the `build/` directory, where they can be read when we actually render our AsciiDoc files into documents.
+This data can be in `YAML`, `JSON`, `XML`, `CSV`, or even free-form formats that can be parsed with regular expressions.
 
 . YAML attributes ingest.
 +
