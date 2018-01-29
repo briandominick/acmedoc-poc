@@ -56,6 +56,10 @@ If you have other use cases, please contribute challenges in the Issues tab on G
 
 LiquiDoc will compile PDF and HTML output.
 
+[WARNING]
+At this time, the Bundler is configured to use a pre-release version of LiquiDoc hosted on GitHub.
+The bottom line in `Gemfile`.
+
 == License
 
 This project is released under MIT License.
