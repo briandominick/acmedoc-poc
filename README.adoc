@@ -66,7 +66,7 @@ The bottom line in `Gemfile`.
 
 For now, the LiquiDoc CMF is basically a directory structure and a configuration file.
 
-=== Directories
+=== Structure
 
 [source]
 ----
@@ -141,6 +141,10 @@ This is for the main content.
 topics:::
 This is for content that may be a little more general than the portal itself.
 For instance, guides or references that might get used as standalone artifacts, belong here.
+
+portal-index.adoc:::
+This is the defining file for book builds and the homepage and something of a map for site builds.
+It is pretty well self-documented.
 
 theme/::
 Files for defining layout and style of the final product go here.
