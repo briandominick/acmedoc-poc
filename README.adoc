@@ -62,6 +62,90 @@ Jekyll build functionality is coming soon, as well as possibly other static site
 At this time, the Bundler is configured to use a pre-release version of LiquiDoc hosted on GitHub.
 The bottom line in `Gemfile`.
 
+== Framework
+
+For now, the LiquiDoc CMF is basically a directory structure and a configuration file.
+
+=== Directories
+
+[source]
+----
+liquidoc-poc/
+├── _configs/
+│   ├── build-portals.yml
+├── _data/
+│   ├── asciidoctor.yml
+│   ├── company.yml
+│   ├── portals.yml
+│   ├── products.yml
+│   └── terms.yml
+├── _templates/
+│   ├── asciidoc/
+│   │   └── x.adoc
+│   └── liquid/
+│       ├── product-info.asciidoc
+│       └── terms.asciidoc
+├── build/*
+│   └── [src/]
+├── src/
+│   ├── includes/
+│   ├── portal/
+│   ├── topics/
+│   └── index.adoc
+└── theme/
+----
+
+_configs/::
+This is where we tell our tooling how to do what.
+The YAML file `build-portals.yml` is LiquiDoc instructions for the whole build.
+We will add Jekyll config files in here soon.
+There could also be Asciidoctor config files here, but attributes should be restricted to build/publish arguments, not documentation content of any kind.
+
+_data/::
++
+--
+* `asciidoctor.yml` is for Asciidoctor build config _and_ global Asciidoctor settings.
+(This should maybe go into `_configs`, since it's build-related.)
+
+* `company.yml` is for information about the company itself.
+
+* `portals.yml` contains 3 blocks, one for each portal.
+
+* `products.yml` contains data about product offerings.
+
+* `terms.yml` is basically the makings of a glossary. It is not ingested as Asciidoctor attributes, but rather pressed into AsciiDoc format by LiquiDoc during preprocessing.
+--
+
+_templates/::
+This directory is for storing templates used in preprocessing.
+The subfolders (such as `liquid`, `asciidoc`, and eventually `haml`) reference the format of the template files they contain.
+In the `liquid/` subdirectory, however, contained files, however, are saved with file extensions that represent the type of file they will produce.
+So `terms.asciidoc` is formatted in Liquid but generates AsciiDoc-ready output by LiquiDoc.
+
+build/::
+This directory is _not_ the repo.
+Instead, it is created by LiquiDoc during preprocessing, and it should never be committed (the `.gitignore` file should prevent this).
+First, we migrate all of the dirs and files in `src/` into `build/` so we can have everything where we need it for the next steps.
+Then we save LiquiDoc-parsed files inside `build/`, specifically for instance in `build/includes/built/`, where our AsciiDoc files know to look at render time.
+
+src/::
+This is where _most_ of our content will come from.
+
+includes/:::
+Stick all kinds of snippets and partials in here.
+If it will never be a standalone topic but will maybe be used in multiple places, such as reused admonitions, place it here.
+
+portal:::
+This is for the main content.
+
+topics:::
+This is for content that may be a little more general than the portal itself.
+For instance, guides or references that might get used as standalone artifacts, belong here.
+
+theme/::
+Files for defining layout and style of the final product go here.
+Our goal is to keep the rest of our source code fairly agnostic about what's in here.
+
 == License
 
 This project is released under MIT License.
