@@ -54,7 +54,9 @@ If you have other use cases, please contribute challenges in the Issues tab on G
 +
  bundle exec liquidoc -c _config/build-portals.yml
 
-LiquiDoc will compile PDF and HTML output.
+LiquiDoc will compile PDFs (see `build/docs/`).
+HTML output is limited to standalone files at the moment (see `build/site/`).
+Jekyll build functionality is coming soon, as well as possibly other static site generators.
 
 [WARNING]
 At this time, the Bundler is configured to use a pre-release version of LiquiDoc hosted on GitHub.
