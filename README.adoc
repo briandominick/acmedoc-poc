@@ -150,6 +150,23 @@ theme/::
 Files for defining layout and style of the final product go here.
 Our goal is to keep the rest of our source code fairly agnostic about what's in here.
 
+=== Process
+
+Asciidoctor is pretty awesome, but it has some serious limitations when it comes to working with data in non-native formats.
+Since most other applications don't read AsciiDoc's (fairly sad) data structures, we want AsciiDoc to honor popular open data formats.
+Therefore, the power of LiquiDoc is mainly in two of its features:
+
+. AsciiDoc preprocessing.
++
+LiquiDoc massages data into AsciiDoc formatted files and saves them in the `build/` directory, where they can be read when we actually render our AsciiDoc files into documents.
+
+. YAML attributes ingest.
++
+AsciiDoc uses variables called _attributes_, but it's not very good at consuming these from external files.
+LiquiDoc fixes this by letting us convert the data in _multiple_ YAML-formatted flat files into attributes when we go to render our final docs.
+
+With this preprocessing and data-ingest strategy, we greatly expand the single-source (DRY) potential of our docs-as-code system.
+
 == License
 
 This project is released under MIT License.
