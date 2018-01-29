@@ -1,0 +1,8 @@
+// This is a file for keeping tagged snippets for inclusion in parent docs
+
+// tag::warning-jargon[]
+[WARNING]
+This document contains lots of jargon.
+See the xref:jargon_guide[Jargon Guide] if you get lost.
+
+// end::warning-jargon[]

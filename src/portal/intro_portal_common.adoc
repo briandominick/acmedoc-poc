@@ -1,0 +1,7 @@
+Welcome to the {portal_product} {portal_user} {portal_term}!
+
+Here you will learn to {user_verb} {portal_product} as a {user_role}.
+
+[TIP]
+The content above appears in all editions, but some of it is variable.
+Many of the strings (e.g., _{portal_product}_ and even _{user_verb}_, etc) are variables (`\{portal_product}` and `\{user_verb}`) are dynamically substituted with AsciiDoc attributes at build time.

@@ -1,0 +1,4 @@
+= Developer Portal Intro
+
+As a developer, you will have access to a sandboxed version of the product for configured for development and testing.
+Your {portal_term} includes documentation of all Basic and Premium features as well as information required to extend the product.

@@ -1,0 +1,4 @@
+= Introduction to the Standard Package
+
+Our standard offering is pretty simple, quite by design.
+It has some feature limitations that we'll tease you with throughout this manual, but there's still quite a bit you can do with it.

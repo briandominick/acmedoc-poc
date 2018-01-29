@@ -1,0 +1,7 @@
+= Jargon Guide
+
+This is the full list of specialized terms used in this product documentation.
+They are also generated as JSON at `/data/terms.json` so we can highlight them in the text when we get to it.
+This is just to show the power of storing data in flat files reusable throughout product docs.
+
+include::../includes/built/terms.adoc[]

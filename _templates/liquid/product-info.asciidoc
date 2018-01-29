@@ -1,0 +1,18 @@
+{% for p in data %}
+// tag::product-{{ p.product_slug }}[]
+.{{p.product_name}}
+****
+[cols="2s,1",width=60]
+|===
+| Supported Versions
+| {{ p.versions_supported.first }} - {{ p.versions_supported.last }}
+
+| Required Memory
+| {{ p.required_hardware_ram_min-gb }}
+
+
+| Required Disk Space
+| {{ p.required_hardware_hdd_min-mb }}
+****
+// end::product-{{ p.product_slug }}[]
+{% endfor %}

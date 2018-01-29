@@ -1,0 +1,4 @@
+{% for t in terms %}
+{{t.term}}::
+{{t.def}}{% if t.ref %} link:{{ref}}[(Resource)]{% endif %}
+{% endfor %}

@@ -1,0 +1,16 @@
+terms:
+- term: AsciiDoc
+  def: Dynamic, lightweight markup language for developing rich, complex documentation projects in flat files
+  ref: http://asciidoctor.org/docs/user-manual
+- term: Asciidoctor
+  def: Suite of open source tools used to process AsciiDoc markup into various output formats
+  ref: http://asciidoctor.org
+- term: build
+  def: The (usually automated) series of actions necessary to compile and package software or documentation
+  aliases: [build procedure]
+- term: Liquid
+  def: Open source templating markup language maintained by Shopify
+  ref: https://help.shopify.com/themes/liquid
+- term: YAML
+  def: a slightly dynamic, semi-structured data format for nested data
+  ref: http://searchitoperations.techtarget.com/definition/YAML-YAML-Aint-Markup-Language

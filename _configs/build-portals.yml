@@ -1,0 +1,54 @@
+# Move source files to the temporary build directory
+- action: migrate
+  source: src
+  target: build
+  options:
+    inclusive: false
+# Generate product info overview
+- action: parse
+  data: _data/products.yml
+  builds:
+    - output: build/includes/built/product-info.adoc
+      template: _templates/liquid/product-info.asciidoc
+# Generate glossary of terms
+- action: parse
+  data: _data/terms.yml
+  builds:
+    - output: build/includes/built/terms.adoc
+      template: _templates/liquid/terms.asciidoc
+- action: render
+  data: _data/portals.yml:portal-1,_data/asciidoctor.yml,_data/company.yml
+  source: build/portal-index.adoc
+  builds:
+    - output: build/site/user-basic/index.html
+      attributes:
+        portal_term: Portal
+    - output: build/docs/user-guide.pdf
+      attributes:
+        portal_term: Manual
+        doctype: book
+        pdf:
+- action: render
+  data: _data/portals.yml:portal-2,_data/asciidoctor.yml,_data/company.yml
+  source: build/portal-index.adoc
+  builds:
+    - output: build/site/user-premium/index.html
+      attributes:
+        portal_term: Portal
+    - output: build/docs/user-guide-premium.pdf
+      attributes:
+        portal_term: Manual
+        doctype: book
+        pdf:
+- action: render
+  data: _data/portals.yml:portal-3,_data/asciidoctor.yml,_data/company.yml
+  source: build/portal-index.adoc
+  builds:
+    - output: build/site/developer/index.html
+      attributes:
+        portal_term: Portal
+    - output: build/docs/developer-guide.pdf
+      attributes:
+        portal_term: Manual
+        doctype: book
+        pdf:

@@ -1,0 +1,28 @@
+portal-1:
+  portal_slug: user-basic
+  portal_user: User
+  portal_product: ACMEdoc Standard
+  user_role: user
+  user_verb: start engaging with
+  product_required: basic
+  site_path: portal/user
+  show_basic:
+portal-2:
+  portal_slug: user-premium
+  portal_user: Premium User
+  portal_product: ACMEdoc Plus
+  user_role: user
+  user_verb: get the most out of
+  product_required: premium
+  site_path: portal/premium
+  show_premium:
+portal-3:
+  portal_slug: developer
+  portal_user: Developer
+  portal_product: ACMEdoc
+  user_role: developer
+  user_verb: extend
+  product_required: basic
+  site_path: portal/dev
+  show_basic:
+  show_premium:

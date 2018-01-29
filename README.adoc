@@ -1,0 +1,61 @@
+= LiquiDoc CMF Proof of Concept
+
+This project is for demonstrating the potential power and complexity of a docs-as-code infrastructure.
+Unlike a content management _system_ (CMS), LiquiDoc CMF will be an open _framework_ with for building documentation architecture.
+It will hopefully be flexible enough to accommodate a huge range of documentation challenges faced by complex software products without constraining implementers and users into proprietary or overly packaged alternatives.
+
+The truth is, existing docs-as-code solutions like ReadTheDocs or any simple static site generator solve probably 90% of software documentation needs.
+For the more complex edge cases, with messy repos or highly conditional, interrelated products/editions, an truly open-ended solution still evades us.
+
+== The Challenge
+
+Our intention is to prove out a docs-as-code approach for solving highly complex documentation problems.
+The complicating factors so far include:
+
+multiple user roles::
+For now, we have basic users, premium users, and developer users.
+These are distinct audiences that engage with different editions of the product in different ways.
+
+multiple overlapping products::
+Our fictional product has a basic edition, an edition with “premium” features, and an overarching API for developers.
+Yet core product features and canonical information remains true across all three of these interface offerings.
+
+tracking across release versions::
+Docs must closely match product releases.
+
+multiple output formats::
+So far, we need three distinct (but heavily overlapping) web “portal” interfaces, as well as 3 PDF editions (we still run old school).
+
+== Usage
+
+This repository is yours to clone or fork -- hack away!
+Hopefully it will at least demonstrate some techniques that will help you get unstuck on any single-sourcing/docs-as-code obstacles you may be facing.
+
+=== Requirements
+
+Like any good implementation of a framework, this project is just a bunch of flat files.
+These files establishing configuration, data, and content for this dummy documentation of a nonexistent product.
+All you need is the *Ruby runtime environment* and *Bundler*, as instructed in the link:https://github.com/briandominick/liquidoc-gem#installation[LiquiDoc README].
+
+[NOTE]
+This repo is *not a framework* in and of itself.
+The framework is being established and documented as this dummy site develops.
+If you have other use cases, please contribute challenges in the Issues tab on GitHub!
+
+=== Build
+
+. Clone or download this repository to your local machine.
+
+. Obtain the required Ruby dependency gems.
++
+ bundle install
+
+. Run the configured build.
++
+ bundle exec liquidoc -c _config/build-portals.yml
+
+LiquiDoc will compile PDF and HTML output.
+
+== License
+
+This project is released under MIT License.

@@ -1,0 +1,47 @@
+= {portal_product} {portal_user} {portal_term}
+// Bump header levels for all subsequent includes
+:leveloffset: +1
+:copyright_line: Copyright (C) 2018 {company_name_official}
+:toc: macro
+
+// for book-formatted, include the copyright and TOC
+ifdef::pdf[]
+
+toc::[]
+
+{copyright_line}
+
+TIP: You are seeing a TOC and copyright line above because this is the PDF/book edition.
+endif::[]
+
+// include intro text common to all portals
+include::portal/intro_portal_common.adoc[]
+
+// include intro text specific to current portal
+include::portal/intro_portal_{portal_slug}.adoc[]
+
+[TIP]
+--
+The above text is from by a dynamically included file using:
+
+[source,asciidoc]
+\include::portal/intro_portal_\{portal_slug}.adoc[]
+--
+
+// insert 'jargon ahead' warning
+include::includes/snippets.adoc[jargon-warning]
+
+// for non-PDF, include the copyright line here
+ifndef::pdf[{copyright_line}]
+
+// for book-formatted output include the remainder of the portal's contents in this document
+
+ifdef::pdf[]
+
+include::portal/product-overview.adoc[]
+
+[appendix]
+[[jargon_guide]]
+include::topics/jargon-guide.adoc[]
+
+endif::pdf[]
