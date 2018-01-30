@@ -24,7 +24,8 @@ tracking across release versions::
 Docs must closely match product releases.
 
 multiple output formats::
-So far, we need three distinct (but heavily overlapping) web “portal” interfaces, as well as 3 PDF editions (we still run old school).
+So far, we need three distinct (but heavily overlapping) web “portal” interfaces, as well as three PDF “manual” editions (we still run old school).
+We will eventually be building all kinds of crazy docs out of this repo, including ePub, API references, Linux man pages, and even HTML slideshows!
 
 == Usage
 
@@ -52,7 +53,7 @@ If you have other use cases, please link:https://github.com/briandominick/liquid
 
 . Run the configured build.
 +
- bundle exec liquidoc -c _config/build-portals.yml
+ bundle exec liquidoc -c _configs/build-portals.yml
 
 LiquiDoc will compile PDFs (see `build/docs/`).
 HTML output is limited to standalone files at the moment (see `build/site/`).
@@ -64,7 +65,7 @@ See the bottom line in `Gemfile`.
 
 == Framework
 
-For now, the LiquiDoc CMF is basically a directory structure and a configuration file.
+The LiquiDoc CMF has a core structure and uses orderly configuration to manage preprocessing and rendering steps.
 
 === Structure
 
@@ -72,7 +73,7 @@ For now, the LiquiDoc CMF is basically a directory structure and a configuration
 ----
 liquidoc-poc/
 ├── _configs/
-│   ├── build-portals.yml
+│   └── build-portals.yml
 ├── _data/
 │   ├── asciidoctor.yml
 │   ├── company.yml
@@ -121,6 +122,12 @@ This directory is for storing templates used in preprocessing.
 The subfolders (such as `liquid`, `asciidoc`, and eventually `haml`) reference the format of the template files they contain.
 In the `liquid/` subdirectory, however, contained files, however, are saved with file extensions that represent the type of file they will produce.
 So `terms.asciidoc` is formatted in Liquid but generates AsciiDoc-ready output by LiquiDoc.
++
+[NOTE]
+We do not normally think of AsciiDoc as a templating system, but it actually is.
+Because it has dynamic capabilities (variable substitution, conditional processing, and file inclusion), AsciiDoc files can be used to preprocess content.
+They can be made up mostly of structural elements (like tables) with placeholders where ingested data will be injected.
+Most `.adoc` files, however, will be kept in `src`, as they'll have actual content.
 
 build/::
 This directory is _not_ the repo.
@@ -135,10 +142,10 @@ includes/:::
 Stick all kinds of snippets and partials in here.
 If it will never be a standalone topic but will maybe be used in multiple places, such as reused admonitions, place it here.
 
-portal:::
+portal/:::
 This is for the main content.
 
-topics:::
+topics/:::
 This is for content that may be a little more general than the portal itself.
 For instance, guides or references that might get used as standalone artifacts, belong here.
 
@@ -167,6 +174,7 @@ AsciiDoc uses variables called _attributes_, but it's not very good at consuming
 LiquiDoc fixes this by letting us convert the data in _multiple_ YAML-formatted flat files into attributes when we go to render our final docs.
 
 With this preprocessing and data-ingest strategy, we greatly expand the single-source (DRY) potential of our docs-as-code system.
+We can either write entire sections of AsciiDoc files by massaging data with Liquid-formatted templates, or we can feed AsciiDoc-readable variables right into the rendering engine, pressing them into the content where token placeholders exist.
 
 == License
 
